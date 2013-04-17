@@ -1,0 +1,5 @@
+# move videos
+
+mvid (){
+  rsync --include='*/' --include '*.mov' --include '*.m4v' --include '*.mp4' --exclude '*' -avz $1* $2
+}
