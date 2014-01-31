@@ -1,1 +1,4 @@
-export EDITOR='subl'
+export EDITOR='vim'
+
+# still set emacs bindings.
+bindkey -e
