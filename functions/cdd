@@ -1,8 +1,0 @@
-cdd () { 
-  test=`find $PROJECTS/* -maxdepth 0 -type d | grep -i "$1" -m 1`
-  if [ ! $1 ] || [ ! $test ]; then
-    cd $repo_folder
-  else
-    cd $test
-  fi 
-}

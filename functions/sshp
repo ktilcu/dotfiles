@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+sshp(){
+    if [ -z $1 ]
+    then
+        echo "Which server? (eg www01, api02)"
+    fi
+    ssh $1.placelocal.com
+}
