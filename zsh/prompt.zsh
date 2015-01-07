@@ -14,12 +14,11 @@ git_branch() {
 }
 
 git_dirty() {
-  st=$($git status 2>/dev/null | tail -n 1)
-  if [[ $st == "" ]]
+  if $(! $git status -s &> /dev/null)
   then
     echo ""
   else
-    if [[ "$st" =~ ^nothing ]]
+    if [[ $($git status --porcelain) == "" ]]
     then
       echo "on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
     else
@@ -47,44 +46,37 @@ need_push () {
   fi
 }
 
-rb_prompt(){
+ruby_version() {
   if (( $+commands[rbenv] ))
   then
-	  echo "%{$fg_bold[yellow]%}$(rbenv version | awk '{print $1}')%{$reset_color%}"
-	else
-	  echo ""
+    echo "$(rbenv version | awk '{print $1}')"
+  fi
+
+  if (( $+commands[rvm-prompt] ))
+  then
+    echo "$(rvm-prompt | awk '{print $1}')"
   fi
 }
 
-# This keeps the number of todos always available the right hand side of my
-# command line. I filter it to only count those tagged as "+next", so it's more
-# of a motivation to clear out the list.
-todo(){
-  if (( $+commands[todo.sh] ))
+rb_prompt() {
+  if ! [[ -z "$(ruby_version)" ]]
   then
-    num=$(echo $(todo.sh ls +next | wc -l))
-    let todos=num-2
-    if [ $todos != 0 ]
-    then
-      echo "$todos"
-    else
-      echo ""
-    fi
+    echo "%{$fg_bold[yellow]%}$(ruby_version)%{$reset_color%} "
   else
     echo ""
   fi
 }
 
-directory_name(){
+directory_name() {
   echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
 }
 
 export PROMPT=$'\n$(directory_name) $(git_dirty)$(need_push)\n%{$fg_bold[red]%}-› %{$reset_color%}'
 set_prompt () {
-  export RPROMPT="%{$fg_bold[cyan]%}$(todo)%{$reset_color%}"
+  export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }
 
-# precmd() {
-#   title "zsh" "%m" "%55<...<%~"
-#   set_prompt
-# }
+precmd() {
+  title "zsh" "%m" "%55<...<%~"
+  set_prompt
+}
