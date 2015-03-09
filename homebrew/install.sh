@@ -18,26 +18,30 @@ brew install caskroom/cask/brew-cask
 
 # Install homebrew packages
 brew install \
-    arp-scan \
-    coreutils \
-    git \
-    go \
-    grc \
-    hub \
-    macvim \
-    mtr \
-    node \
-    python \
-    rename \
-    spark \
-    the_silver_searcher \
-    tig \
-    tlassemble \
-    tmux \
-    tree \
-    vim \
-    watch \
-    wget \
-    zsh
+  arp-scan \
+  coreutils \
+  git \
+  go \
+  grc \
+  hub \
+  macvim \
+  mtr \
+  node \
+  python \
+  rename \
+  spark \
+  the_silver_searcher \
+  tig \
+  tlassemble \
+  tmux \
+  tree \
+  vim \
+  watch \
+  wget \
+  zsh
+
+brew cask install \
+  iterm2 \
+  virtualbox
 
 exit 0
