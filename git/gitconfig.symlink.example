@@ -5,16 +5,13 @@
 	user = ktilcu
 	token = 78afb4f41651016a7b9ddc02fa085653
 [core]
-	excludesfile = /Users/trike/.gitignore_global
-[difftool "sourcetree"]
+	excludesfile = ~/.gitignore_global
+[difftool]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+[mergetool]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	trustExitCode = true
-[alias]
-	histy = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	hist = log --pretty=oneline --graph --date=short --decorate --abbrev-commit
 [color]
 	ui = auto
 [color "branch"]
@@ -33,9 +30,7 @@
 # alias {{{
 [alias]
     st = status -s
-
     cl = clone
-
     ci = commit
     cm = commit -m
     cma = commit -a -m
@@ -51,6 +46,7 @@
     br = branch 
     #"!git branch -ra | grep -v done"
     bra = branch -ra
+
     #list commands
     le = log --oneline --decorate
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
@@ -59,13 +55,18 @@
     ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
     lc  = "!f() { git ll "$1"^.."$1"; }; f"
     lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+	histy = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	hist = log --pretty=oneline --graph --date=short --decorate --abbrev-commit
+
     #list all aliases
     la = "!git config -l | grep alias | cut -c 7-"
     diff = diff --word-diff
     d = diff --word-diff
     dc = diff --cached
+     
     #list modified files in last commit
     dl = "!git ll -1"
+
     #diff last commit
     dlc = diff --cached HEAD^
     dr  = "!f() { git diff "$1"^.."$1"; }; f"
@@ -118,3 +119,4 @@
     ours = "!f() { git co --ours $@ && git add $@; }; f"
     theirs = "!f() { git co --theirs $@ && git add $@; }; f"
 # }}}
+
