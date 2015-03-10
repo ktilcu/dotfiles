@@ -87,7 +87,7 @@ then
     fail "error installing dependencies"
   fi
   # Run installers
-  $ZSH/homebrew/install.sh 2>&1
+  $ZSH/script/install.sh 2>&1
 fi
 
 echo ''
