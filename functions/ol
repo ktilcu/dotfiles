@@ -1,0 +1,6 @@
+#!/bin/bash
+
+## Open localhost
+function ol() {
+  open "http://localhost:${1:-3000}"
+}

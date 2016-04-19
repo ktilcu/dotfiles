@@ -1,17 +1,49 @@
-alias reload!='. ~/.zshrc'
-alias ls='ls -G'
+alias .....="cd ../../../.."
+alias ....="cd ../../.."
+alias ...='cd ../..'
+alias ..='cd ..'
 alias cd..="cd .."
-alias l="ls -al"
-alias lp="ls -p"
 alias h='history'
-alias mkdir='mkdir -p'
+alias l="ls -al"
 alias la='ls -a'
 alias ll='ls -l'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
+alias lp="ls -p"
+alias ls='ls -G'
+alias mkdir='mkdir -p'
+alias reload!='. ~/.zshrc'
+alias t='task'
+alias ta='task add'
+alias dm='docker-machine'
+alias dmsd='docker-machine start dev'
+
+## Git aliases from TJ Holowaychuk
+alias ga="git add"
+alias gb="git branch"
+alias gba="git branch -a"
+alias gbd="git branch -D"
+alias gc="git commit"
+alias gca="git commit --amend"
+alias gcd='cd "`git rev-parse --show-toplevel`"'
+alias gco="git checkout"
+alias gcob="git checkout -b"
+alias gcp="git cherry-pick"
+alias gd="git diff | subl"
+alias gl="git log --pretty='format:%Cgreen%h%Creset %an - %s' --graph"
+alias gm="git merge --ff"
+alias gp="git push"
+alias gpom="git pull --rebase origin master"
+alias gpoh="git push origin HEAD"
+alias gpt="git push --tags"
+alias gpum="git pull --rebase upstream master"
+alias grh="git reset --hard"
+alias gs="git status"
 alias ts="tig status"
+
+function dc () {
+  docker images -f 'dangling=true' -q | xargs docker rmi
+  docker rm $(docker ps -a -q)
+  docker images -f 'dangling=true' -q | xargs docker rmi
+}
 
 # grc overides for ls
 #   Made possible through contributions from generous benefactors like
