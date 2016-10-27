@@ -16,6 +16,9 @@ alias ta='task add'
 alias dm='docker-machine'
 alias dmsd='docker-machine start dev'
 
+## Jira
+alias sprint='jira sprint --rapidboard "Ad Serving Scrum Board" | grep "ACTIVE" | awk '"'"'{print $4}'"'"' | xargs -I{} jira sprint --rapidboard "Ad Serving Scrum Board" --sprint {}'
+
 ## Git aliases from TJ Holowaychuk
 alias ga="git add"
 alias gb="git branch"
@@ -36,6 +39,7 @@ alias gpoh="git push origin HEAD"
 alias gpt="git push --tags"
 alias gpum="git pull --rebase upstream master"
 alias grh="git reset --hard"
+alias grhom="git reset --hard origin/master"
 alias gs="git status"
 alias ts="tig status"
 
