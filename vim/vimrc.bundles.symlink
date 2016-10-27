@@ -2,7 +2,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Search
 Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
-" Git 
+" Git
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 " Objects
@@ -31,8 +31,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/greplace.vim'
 Plugin 'vim-scripts/matchit.zip'
+Plugin 'PeterRincker/vim-argumentative'
 " Language Support
-Plugin 'crusoexia/vim-javascript-lib' 
+Plugin 'crusoexia/vim-javascript-lib'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'markcornick/vim-terraform'
 Plugin 'mattn/emmet-vim'
@@ -44,7 +45,11 @@ Plugin 'tpope/vim-jdaddy'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'IN3D/vim-raml'
 Plugin 'tpope/vim-cucumber'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'dhruvasagar/vim-table-mode'
 " Colors
 Plugin 'crusoexia/vim-monokai'
-Plugin 'tpope/vim-vividchalk'
-Plugin 'jdkanani/vim-material-theme'
+" Editor
+Plugin 'ShowTrailingWhitespace'
+

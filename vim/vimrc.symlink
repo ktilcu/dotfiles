@@ -29,6 +29,15 @@ set shiftwidth=4                                             " number of spaces 
 set smarttab                                                 " insert tabs on the start of a line according to shiftwidth, not tabstop
 set softtabstop=2                                            " insert mode tab and backspace use 2 spaces
 set tabstop=4                                                " actual tabs occupy 8 characters
+
+" Whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
 " }}}
 " Swap files {{{
 set backupcopy=yes                                           " see :help crontab
@@ -81,7 +90,7 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 " Folding {{{
 set foldenable          " don't fold files by default on open
 set foldmethod=syntax   " fold based on indent level
-set foldnestmax=1      " max 10 depth
+set foldnestmax=10      " max 10 depth
 set foldlevelstart=99   " start with fold level of 1
 " PHP folding
 let g:php_folding=2
@@ -134,16 +143,29 @@ nnoremap <leader>u :GundoToggle<CR>
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
+" horizontal split
 noremap <leader>- <c-w>s
+" vertical split
 noremap <leader>\ <c-w>v
+" close split
 noremap <leader>\\ <c-w>q
 " Rebalance split
 nnoremap <leader>[ <c-w>=
 " Maximize split
 nnoremap <leader>] <c-w><bar>
 
+" fugitive remaps
+nnoremap gbr :Gbrowse<CR>
+vnoremap gbr :Gbrowse<CR>
+nnoremap gbl :Gblame<CR>
+
+" sort lines by length
+vmap <leader>l :'<,'>'<,'> ! awk '{ print length(), $0 <bar> "sort -n <bar> cut -d\\  -f2-" }'<CR>
+
 " Replace the word under the cursor
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/
+" poor mans jump to definition by searching with Ag :(
+nnoremap <leader>gd :Ag<space><C-r><C-w><CR>
 
 " Close buffers
 nmap <leader>w :bd<CR>
@@ -188,12 +210,13 @@ autocmd BufRead,BufNewFile *.feature set formatoptions=qrn1t
 autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
 autocmd BufRead,BufNewFile Boxfile set filetype=yaml
 
-autocmd BufRead,BufNewFile *.html set foldnestmax=99
-autocmd BufRead,BufNewFile *.html set foldmethod=indent
+autocmd BufRead,BufNewFile *.html,*.json set foldnestmax=99
+autocmd BufRead,BufNewFile *.html,*.json set foldmethod=indent
 
-autocmd BufRead,BufNewFile *.json set foldnestmax=99
-autocmd BufRead,BufNewFile *.json set foldmethod=indent
-
+autocmd FileType js UltiSnipsAddFiletypes javascript-jasmine
+autocmd FileType js UltiSnipsAddFiletypes javascript-node
+autocmd FileType js UltiSnipsAddFiletypes javascript-jsdoc
+autocmd FileType js UltiSnipsAddFiletypes javascript-angular
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
@@ -245,5 +268,14 @@ let g:ycm_use_ultisnips_completer = 1
 " " Ultisnips trigger help
 " au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 " }}}
-
+" Table Mode {{{
+let g:table_mode_corner="|"
+" }}}
+" Fugitive {{{
+autocmd BufReadPost fugitive://* set bufhidden=delete
+" }}}
+" Allow gf to work with PHP namespaced classes.
+set includeexpr=substitute(v:fname,'\\\','/','g')
+set suffixesadd+=.php
+set path+=/Users/kyle/development/placelocal/lib/**
 " vim:foldmethod=marker:foldlevel=0
