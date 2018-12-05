@@ -1,0 +1,3 @@
+c2u (){
+    pll -fcampaign-id=$1 campaign-uuid
+}

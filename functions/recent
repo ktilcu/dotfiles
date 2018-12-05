@@ -1,0 +1,3 @@
+recent (){
+    git co $(git recent-branches | column -ts '|' | fzf --ansi --no-sort | sed -e 's/^[* ] //g' | cut -d' ' -f1)
+}

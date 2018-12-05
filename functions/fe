@@ -1,0 +1,5 @@
+#!/bin/bash
+# Edit after finding from rg + fzf
+function fe () {
+    $EDITOR $(f "$1")
+}

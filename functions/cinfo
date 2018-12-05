@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cinfo () {
+    file=$1
+    while read uuid; do
+        paste -d '\ ' <(u2c "${uuid}") <(pll -fcampaign-uuid="$uuid" publisher-name)
+    done < $file
+}
+

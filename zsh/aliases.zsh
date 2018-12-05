@@ -9,12 +9,11 @@ alias la='ls -a'
 alias ll='ls -l'
 alias lp="ls -p"
 alias ls='ls -G'
+alias t='tasks'
+alias ta='tasks add'
+alias te='tasks edit'
 alias mkdir='mkdir -p'
 alias reload!='. ~/.zshrc'
-alias t='task'
-alias ta='task add'
-alias dm='docker-machine'
-alias dmsd='docker-machine start dev'
 
 ## Jira
 alias sprint='jira sprint --rapidboard "Ad Serving Scrum Board" | grep "ACTIVE" | awk '"'"'{print $4}'"'"' | xargs -I{} jira sprint --rapidboard "Ad Serving Scrum Board" --sprint {}'
@@ -43,10 +42,28 @@ alias grhom="git reset --hard origin/master"
 alias gs="git status"
 alias ts="tig status"
 
+alias ctags="`brew --prefix`/bin/ctags"
+
 function dc () {
   docker images -f 'dangling=true' -q | xargs docker rmi
   docker rm $(docker ps -a -q)
   docker images -f 'dangling=true' -q | xargs docker rmi
+}
+
+function gcor (){
+  git co $(git recent-branches | column -ts '|' | fzf --ansi --no-sort | sed -e 's/^[* ] //g' | cut -d' ' -f1)
+}
+function jms (){
+    jira mine | fzf --ansi | cut -d ":" -f1
+}
+function jmv (){
+  jira view $(jms)
+}
+function jmc (){
+  jira comment $(jms)
+}
+function jmb (){
+  jira browse $(jms)
 }
 
 # grc overides for ls
@@ -62,6 +79,3 @@ fi
 
 # Pipe my public key to my clipboard. Fuck you, pay me.
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
-
-alias ios="open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app"
-
