@@ -65,6 +65,9 @@ function jmc (){
 function jmb (){
   jira browse $(jms)
 }
+function jme (){
+  jira edit $(jms)
+}
 
 # grc overides for ls
 #   Made possible through contributions from generous benefactors like

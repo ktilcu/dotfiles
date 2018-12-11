@@ -1,14 +1,17 @@
 [user]
-	name = AUTHORNAME
-	email = AUTHOREMAIL
+	name = Kyle Tilman
+	email = kyletilman@gmail.com
+	signingkey = 0C2C1AF9
+[commit]
+	gpgsign = true
 [github]
 	user = ktilcu
 	token = 78afb4f41651016a7b9ddc02fa085653
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/kyle/.gitignore_global
 [difftool]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	trustExitCode = true
@@ -43,7 +46,7 @@
     ai = add --interactive
 
     co = checkout
-    br = branch 
+    br = branch
     #"!git branch -ra | grep -v done"
     bra = branch -ra
 
@@ -55,15 +58,24 @@
     ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
     lc  = "!f() { git ll "$1"^.."$1"; }; f"
     lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
-	histy = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	hist = log --pretty=oneline --graph --date=short --decorate --abbrev-commit
+    histy = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    hist = log --pretty=oneline --graph --date=short --decorate --abbrev-commit
+    recent-branches = for-each-ref --sort=-committerdate refs/heads/ \
+        --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset)|\
+%(color:bold red)%(objectname:short)%(color:reset)|\
+%(color:bold green)(%(committerdate:relative))%(color:reset)|\
+%(color:bold blue)%(authorname)%(color:reset)|\
+%(color:yellow)%(upstream:track)%(color:reset)|\
+%(color:black) %(color:reset)\
+%(contents:subject)|\
+%(color:black) %(color:reset)|'
 
     #list all aliases
     la = "!git config -l | grep alias | cut -c 7-"
     diff = diff --word-diff
     d = diff --word-diff
     dc = diff --cached
-     
+
     #list modified files in last commit
     dl = "!git ll -1"
 
@@ -119,4 +131,5 @@
     ours = "!f() { git co --ours $@ && git add $@; }; f"
     theirs = "!f() { git co --theirs $@ && git add $@; }; f"
 # }}}
-
+[gpg]
+	program = gpg
