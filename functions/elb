@@ -1,8 +1,0 @@
-#!/bin/bash
-# Find instances associated to elb
-elb () {
-    if [ -n "$1" ]; then
-        aws elb describe-instance-health --load-balancer-name "$1"
-    fi
-}
-

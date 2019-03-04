@@ -1,5 +1,0 @@
-#!/bin/bash
-# Find files with rg and then select them for edit with fzf
-function f (){
-    echo $(rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always" "$1" | fzf --ansi | cut -d":" -f1)
-}

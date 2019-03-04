@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/Users/kyle/.dotfiles/osx'
-let g:netrw_dirhist_2='/Users/kyle/.dotfiles/bin'
-let g:netrw_dirhist_3='/Users/kyle/.dotfiles'
-let g:netrw_dirhist_4='/Users/kyle/.dotfiles/macos'
-let g:netrw_dirhist_5='/Users/kyle'

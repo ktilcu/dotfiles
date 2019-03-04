@@ -1,3 +1,0 @@
-mine () {
-    jira view $(jira mine | fzf | cut -d":" -f1)
-}

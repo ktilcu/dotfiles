@@ -1,6 +1,0 @@
-#!/bin/bash
-# remove key from known hosts
-rk (){
-    sed -i '' -e "$1d" "$HOME/.ssh/known_hosts"
-    echo "removed line $1"
-}

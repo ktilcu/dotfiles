@@ -1,6 +1,0 @@
-#!/bin/zsh
-#
-# Stage all unstaged.
-
-git push origin HEAD
-hub pull-request -b paperg:master
