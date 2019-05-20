@@ -1,8 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/kyletilman/.dotfiles/bin'
-let g:netrw_dirhist_2='/Users/kyletilman/.docker'
-let g:netrw_dirhist_3='/Users/kyletilman/.directory_history'
-let g:netrw_dirhist_4='/Users/kyletilman/.config'
-let g:netrw_dirhist_5='/Users/kyletilman/.cache'
-let g:netrw_dirhist_6='/Users/kyletilman/.aws'
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/kyle/.config/nvim'
+let g:netrw_dirhist_2='/Users/kyle/.config/nvim/ftplugin'
+let g:netrw_dirhist_3='/Users/kyle/.config/nvim'
+let g:netrw_dirhist_4='/Users/kyle/.config/nvim/autoload'
+let g:netrw_dirhist_5='/Users/kyle/.config/nvim/colors'
+let g:netrw_dirhist_6='/Users/kyle/.config/nvim/ftdetect'
+let g:netrw_dirhist_7='/Users/kyle/.config/nvim/ftplugin'
+let g:netrw_dirhist_8='/Users/kyle/.config/nvim/plugin'

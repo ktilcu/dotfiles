@@ -6,10 +6,10 @@ let &packpath = &runtimepath
 " don't bother with vi compatibility
 set nocompatible
 
-let g:python_host_prog = '/usr/local/bin/python3'
+let g:python_host_prog = '/usr/local/bin/python'
 let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
-
+let g:neoterm_autoscroll = 1
 " ensure ftdetect et al work
 filetype plugin indent on
 
@@ -160,12 +160,9 @@ Plug 'w0rp/ale'                           " Linter
 
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 
 " Snippets
 Plug 'SirVer/ultisnips'
@@ -173,17 +170,23 @@ Plug 'honza/vim-snippets'
 
 " Language Support
 " JavaScript
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
+
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'cdata/vim-tagged-template'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
+  \ 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx', 'css', 'less', 'scss', 'json', 'graphql'] }
+
+" clojure
+Plug 'guns/vim-clojure-static'
+Plug 'kien/rainbow_parentheses.vim'
 
 " TypeScript
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript',       { 'do': './install.sh' }
-
+Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins'}
 " PHP
 Plug 'shawncplus/phpcomplete.vim'
 
@@ -217,6 +220,20 @@ call plug#end()
 " vim-airline
 let g:airline_powerline_fonts = 1 " Enable the patched Powerline fonts
 
+let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'typescript.tsx': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'typescript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ }
+let g:LanguageClient_diagnosticsEnable=0
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> <F5> :call LanguageClient_contextMenu()<CR>
 
 
 

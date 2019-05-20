@@ -12,7 +12,7 @@ nnoremap <C-t> :Files<cr>
 
 nnoremap <leader>b :Buffers<CR>
 nnoremap <C-p> :FZF<CR>
-nnoremap <leader>a :RG<space>
+nnoremap <leader>a :Rg<space>
 nnoremap <leader>gd :Rg<space><C-r><C-w><CR>
 
 " Custom colors to match theme
