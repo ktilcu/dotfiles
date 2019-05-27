@@ -8,8 +8,13 @@ export CLICOLOR=true
 export GPG_TTY=$(tty)
 export GEM_HOME=/Users/kyle/.gem
 export PINENTRY_USER_DATA="USE_CURSES=1"
-export PATH="${GEM_HOME}/bin:./bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH:${HOME}/.local/bin:$(python -m site --user-base)/bin:/Users/kyle/.composer/vendor/bin:/usr/local/opt/python/libexec/bin"
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:${GEM_HOME}/bin:./bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH:${HOME}/.local/bin:$(python -m site --user-base)/bin:/Users/kyle/.composer/vendor/bin:/usr/local/opt/python/libexec/bin"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
+
+# Android Dev
+export ANDROID_HOME=/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # emacs bindings, specifically for ctrl-r reverse search
 bindkey -e
