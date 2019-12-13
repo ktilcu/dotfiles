@@ -9,6 +9,6 @@ rsync --exclude ".git/" \
 	--exclude "Brewfile" \
 	-avh --no-perms . ~;
 
-./.macos
+# ./.macos
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew Brewfile
