@@ -3,10 +3,10 @@
 	email = kyletilman@gmail.com
 	signingkey = 0C2C1AF9
 [commit]
-	gpgsign = true
+	; gpgsign = true
 [github]
 	user = ktilcu
-	token = 78afb4f41651016a7b9ddc02fa085653
+	token = "b363e21822f607fd22f1113f8d9cf54875dd3a4e"
 [core]
 	excludesfile = /Users/kyle/.gitignore_global
 [difftool]

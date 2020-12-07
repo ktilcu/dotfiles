@@ -8,8 +8,10 @@ set nocompatible
 
 let g:python_host_prog = '/usr/local/bin/python2'
 let g:python2_host_prog = '/usr/local/bin/python2'
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '/usr/local/bin/python'
+let g:node_host_prog = '/Users/kyletilman/.nvm/versions/node/v13.5.0/lib/node_modules/neovim/bin/cli.js'
 let g:neoterm_autoscroll = 1
+let g:test#javascript#jest#executable = '/Users/kyletilman/.nvm/versions/node/v8.17.0/bin/node node_modules/.bin/jest'
 " ensure ftdetect et al work
 filetype plugin indent on
 
@@ -36,8 +38,7 @@ autocmd BufWinLeave * call clearmatches()
 
 " indent <CR> in function braces
 let delimitMate_expand_cr = 1
-
-
+imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<Plug>delimitMateCR"
 " Swap files
 set backupcopy=yes                                           " see :help crontab
 set directory-=.                                             " don't store swapfiles in the current directory
@@ -117,7 +118,12 @@ call plug#begin()
 Plug 'tpope/vim-sensible'
 
 " UI
+Plug 'drewtempelmeyer/palenight.vim'
 Plug 'trevordmiller/nova-vim'
+Plug 'jcherven/jummidark.vim'
+Plug 'crusoexia/vim-monokai'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'ciaranm/inkpot'
 Plug 'vim-airline/vim-airline'            " Handy info
 Plug 'ryanoasis/vim-webdevicons'
 Plug 'junegunn/goyo.vim'
@@ -126,7 +132,8 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf',                      { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-scripts/ctags.vim'              " ctags related stuff
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
+Plug 'liuchengxu/vista.vim'
 Plug 'tpope/vim-vinegar'
 
 " File Navigation
@@ -140,6 +147,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'                 " Change word surroundings
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-markdown'
 Plug 'kana/vim-textobj-user'
 Plug 'jasonlong/vim-textobj-css'
 Plug 'editorconfig/editorconfig-vim'
@@ -159,14 +167,17 @@ Plug 'lambdalisue/vim-gista'              " Gist manager
 Plug 'w0rp/ale'                           " Linter
 
 " Autocomplete
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Snippets
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'jhkersul/vim-jest-snippets'
 
 " Language Support
 " JavaScript
+Plug 'janko/vim-test'
 Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 
 Plug 'pangloss/vim-javascript'
@@ -202,8 +213,9 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'klen/python-mode',                  { 'for': 'python' }
 
 " Markdown
-Plug 'reedes/vim-pencil'                  " Markdown, Writing
-Plug 'gabrielelana/vim-markdown'
+" Plug 'reedes/vim-pencil'                  " Markdown, Writing
+
+" Plug 'gabrielelana/vim-markdown'
 
 " Scala
 Plug 'derekwyatt/vim-scala'
@@ -309,19 +321,23 @@ nmap <leader>w :bd<CR>
 " clears the search buffer when you press ,/
 nmap <silent> ,/ :nohlsearch<CR>
 " Reselect text from last action
-nnoremap gr `[V`]
+nnoremap rh `[V`]
 " <Space> for folds
 nnoremap <space> za
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
 " Don't copy the contents of an overwritten selection.
-vnoremap p "_dP
+vnoremap p "_dp
 
+let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'typescript', 'ts=typescript']
 
 " Section: Theme
 " ------------------------------
 
 syntax enable
 set background=dark
-" colorscheme spring-night
-colorscheme custom-nova
+colorscheme jummidark
+
+
+
+" command -nargs=* Glg Git! histy <args>

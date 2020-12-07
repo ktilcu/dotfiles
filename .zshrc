@@ -2,13 +2,12 @@
 export PROJECTS=~/development
 export FUNCTIONS=~/.functions
 export EDITOR='nvim'
-export EDITOR='nvim'
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export CLICOLOR=true
 export GPG_TTY=$(tty)
 export GEM_HOME=/Users/kyle/.gem
 export PINENTRY_USER_DATA="USE_CURSES=1"
-export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:${GEM_HOME}/bin:./bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH:${HOME}/.local/bin:$(python -m site --user-base)/bin:/Users/kyle/.composer/vendor/bin:/usr/local/opt/python/libexec/bin"
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:${GEM_HOME}/bin:./bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH:${HOME}/.local/bin:/Users/kyletilman/Library/Python/3.8/bin/:/Users/kyle/.composer/vendor/bin:/usr/local/opt/python/libexec/bin"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
 # Android Dev
@@ -18,6 +17,7 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # emacs bindings, specifically for ctrl-r reverse search
 bindkey -e
+
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
 if [[ -a ~/.localrc ]]
@@ -25,12 +25,14 @@ then
   source ~/.localrc
 fi
 
+fpath=($HOME/ $fpath)
+
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 compinit
 
-source $FUNCTIONS
 source ~/.aliases
+source $FUNCTIONS
 
 # matches case insensitive for lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -84,8 +86,6 @@ if _has fzf && _has ag; then
   --color info:108,prompt:109,spinner:108,pointer:168,marker:168
   '
 fi
-
-fpath=($HOME/.functions $fpath)
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -214,3 +214,6 @@ if test -f $completion
 then
   source $completion
 fi
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion

@@ -1,17 +1,18 @@
 let g:ale_linters = {
-\   'javascript': ['eslint', 'flow'],
-\   'typescript': ['tslint', 'eslint', 'tsserver'],
+\   'javascript': ['tslint', 'tsserver', 'eslint'],
+\   'typescript': ['tslint', 'tsserver', 'eslint'],
 \   'html': []
 \  }
-
+" let g:ale_linters_ignore = {'javascript':['tslint'], 'typescript': ['tslint']}
 let g:ale_linter_aliases = {
+\  'jsx': 'javascript',
 \  'typescript.tsx': 'typescript',
 \  'typescriptreact': 'typescript'
 \  }
 
 let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\   'typescript': ['eslint'],
+\   'javascript': ['eslint', 'tsserver'],
+\   'typescript': ['eslint', 'tsserver'],
 \   'typescriptreact': ['eslint'],
 \   }
 

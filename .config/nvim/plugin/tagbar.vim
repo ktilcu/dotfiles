@@ -1,5 +1,5 @@
 " Shortcut to open TagBar
-nnoremap <leader>t :TagbarToggle<CR>
+" nnoremap <leader>t :TagbarToggle<CR>
 
 let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 " let g:tagbar_type_typescript = {

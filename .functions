@@ -2,12 +2,12 @@
 
 # Find files with rg and then select them for edit with fzf
 function f (){
-    echo $(rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always" "$1" | fzf --ansi | cut -d":" -f1)
+    echo $(rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always" "$1" | fzf --ansi | awk '{split($0,a,":"); print  "+" a[2], a[1]}')
 }
 
 # Edit after finding from rg + fzf
 function fe () {
-    $EDITOR $(f "$1")
+    nvim $(f "$1")
 }
 
 # Logbook
@@ -45,6 +45,6 @@ rk (){
 }
 
 c (){
-  cd $PROJECTS/$1;
+  cd "$PROJECTS/$1";
 }
-compdef '_files -W $PROJECTS -/' c
+# compdef '_files -W $PROJECTS -/' _c
