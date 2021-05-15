@@ -1,5 +1,5 @@
 " Set node path
-let g:coc_node_path = '/Users/kyletilman/.nvm/versions/node/v13.5.0/bin/node'
+let g:coc_node_path = '/Users/kyle/.nvm/versions/node/v15.3.0/bin/node'
 
 " Better display for messages
 set cmdheight=2

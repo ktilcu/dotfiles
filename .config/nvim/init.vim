@@ -6,12 +6,14 @@ let &packpath = &runtimepath
 " don't bother with vi compatibility
 set nocompatible
 
-let g:python_host_prog = '/usr/local/bin/python2'
+let g:python_host_prog = '/usr/local/bin/python3'
 let g:python2_host_prog = '/usr/local/bin/python2'
-let g:python3_host_prog = '/usr/local/bin/python'
-let g:node_host_prog = '/Users/kyletilman/.nvm/versions/node/v13.5.0/lib/node_modules/neovim/bin/cli.js'
+let g:python3_host_prog = '/usr/local/bin/python3'
+let g:node_host_prog = '/Users/kyle/.nvm/versions/node/v15.3.0/lib/node_modules/neovim/bin/cli.js'
 let g:neoterm_autoscroll = 1
-let g:test#javascript#jest#executable = '/Users/kyletilman/.nvm/versions/node/v8.17.0/bin/node node_modules/.bin/jest'
+let $NVIM_NODE_LOG_FILE='nvim-node.log'
+  let $NVIM_NODE_LOG_LEVEL='warn'
+" let g:test#javascript#jest#executable = '/Users/kyletilman/.nvm/versions/node/v8.17.0/bin/node node_modules/.bin/jest'
 " ensure ftdetect et al work
 filetype plugin indent on
 

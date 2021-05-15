@@ -115,19 +115,19 @@
 
     {:des "Tilde grave"
      :rules [
-        [:!!n :grave_accent_and_tilde]
-        [:!!m :!Sgrave_accent_and_tilde]
+        [:!!j :grave_accent_and_tilde]
+        [:!!k :!Sgrave_accent_and_tilde]
      ]
     }
 
-    {:des "vim arrows"
-     :rules [
-        [:!!h :left_arrow]
-        [:!!j :down_arrow]
-        [:!!k :up_arrow]
-        [:!!l :right_arrow]
-     ]
-    }
+    ; {:des "vim arrows"
+    ;  :rules [
+    ;     [:!!h :left_arrow]
+    ;     [:!!j :down_arrow]
+    ;     [:!!k :up_arrow]
+    ;     [:!!l :right_arrow]
+    ;  ]
+    ; }
 
     {:des "Cmd/Ctrl -> () : primary thumb keys"
      :rules [

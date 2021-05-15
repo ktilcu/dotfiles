@@ -99,4 +99,7 @@ then
 fi
 
 # Set path for node
-alias nvim="PATH=\"/Users/kyletilman/.nvm/versions/node/v13.5.0/bin/:$PATH\" nvim"
+alias nvim="PATH=\"/Users/kyle/.nvm/versions/node/v15.3.0/bin/:$PATH\" nvim"
+
+# carbon
+alias cws="carbonhealth-aws aws"

@@ -9,6 +9,7 @@ export GEM_HOME=/Users/kyle/.gem
 export PINENTRY_USER_DATA="USE_CURSES=1"
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:${GEM_HOME}/bin:./bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH:${HOME}/.local/bin:/Users/kyletilman/Library/Python/3.8/bin/:/Users/kyle/.composer/vendor/bin:/usr/local/opt/python/libexec/bin"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
 
 # Android Dev
 export ANDROID_HOME=/Library/Android/sdk
@@ -214,6 +215,10 @@ if test -f $completion
 then
   source $completion
 fi
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

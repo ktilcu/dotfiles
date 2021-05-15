@@ -22,7 +22,7 @@ get_filename_by_id () {
 task_add () {
     local id=$(next_id)
     local sanitized_filename=$(sed -e 's/ /_/g' <<< "$*")
-    touch "$task_dir/$id-$sanitized_filename"
+    touch "$task_dir/$id-$sanitized_filename.md"
     echo "added task with id $id"
 }
 
@@ -39,7 +39,7 @@ task_show () {
 task_edit () {
     local id=$1
     task=$(find "$task_dir" -name "$id-*" -type f -d 1)
-    vim "$task"
+    $EDITOR "$task"
 }
 
 task_append () {
