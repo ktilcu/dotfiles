@@ -9,6 +9,7 @@
 	token = "b363e21822f607fd22f1113f8d9cf54875dd3a4e"
 [core]
 	excludesfile = /Users/kyle/.gitignore_global
+	editor = nvim
 [difftool]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =

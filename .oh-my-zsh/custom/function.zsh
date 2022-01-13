@@ -1,0 +1,55 @@
+#!/usr/bin/env zsh
+
+# Find files with rg and then select them for edit with fzf
+function f (){
+    echo $(rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always" "$1" | fzf --ansi | awk '{split($0,a,":"); print  "+" a[2], a[1]}')
+}
+
+# Edit after finding from rg + fzf
+function fe () {
+    nvim $(f "$1")
+}
+
+# Logbook
+function lb() {
+    vim ~/logbook/$(date '+%Y-%m-%d').md
+}
+
+# mkdir and cd
+mkcd () {
+  mkdir $1 && cd $1
+}
+
+# move and go to dir
+mvgo (){
+  if [ -d "$2" ];then
+    mv $1 $2 && cd $2
+  else
+    mv $1 $2
+  fi
+}
+
+## Get the process on a given port
+function port() {
+  lsof -i ":${1:-80}"
+}
+
+recent (){
+    git co $(git recent-branches | column -ts '|' | fzf --ansi --no-sort | sed -e 's/^[* ] //g' | cut -d' ' -f1)
+}
+
+# remove key from known hosts
+rk (){
+    sed -i '' -e "$1d" "$HOME/.ssh/known_hosts"
+    echo "removed line $1"
+}
+
+c (){
+  cd "$PROJECTS/$1";
+}
+# compdef '_files -W $PROJECTS -/' _c
+
+cda (){
+  read a
+  echo "{\"cda\":\"$a\"}" > cda.json
+}
