@@ -9,7 +9,7 @@ set nocompatible
 let g:python_host_prog = '/usr/local/bin/python3'
 let g:python2_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
-let g:node_host_prog = '/Users/kyle/.nvm/versions/node/v15.3.0/lib/node_modules/neovim/bin/cli.js'
+let g:node_host_prog = '/Users/kyletilman/.nvm/versions/node/v16.2.0/lib/node_modules/neovim/bin/cli.js'
 let g:neoterm_autoscroll = 1
 let $NVIM_NODE_LOG_FILE='nvim-node.log'
   let $NVIM_NODE_LOG_LEVEL='warn'
@@ -124,6 +124,8 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'trevordmiller/nova-vim'
 Plug 'jcherven/jummidark.vim'
 Plug 'crusoexia/vim-monokai'
+Plug 'arzg/vim-colors-xcode'
+Plug 'connorholyday/vim-snazzy'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'ciaranm/inkpot'
 Plug 'vim-airline/vim-airline'            " Handy info
@@ -157,6 +159,7 @@ Plug 'PeterRincker/vim-argumentative'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/ShowTrailingWhitespace'
 Plug 'Raimondi/delimitMate'
+Plug 'machakann/vim-highlightedyank'
 
 " Git
 Plug 'tpope/vim-fugitive'                 " Git stuff in Vim
@@ -164,7 +167,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim',                   { 'on': 'GV' }
 Plug 'jez/vim-github-hub'                 " Filetype for hub pull requests
 Plug 'lambdalisue/vim-gista'              " Gist manager
-
+Plug 'AGhost-7/critiq.vim'
 " Task Running
 Plug 'w0rp/ale'                           " Linter
 
@@ -186,8 +189,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'cdata/vim-tagged-template'
 Plug 'prettier/vim-prettier', {
-  \ 'do': 'npm install',
-  \ 'for': ['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx', 'css', 'less', 'scss', 'json', 'graphql'] }
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'javascript.jsx', 'typescript.tsx', 'typescriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 Plug 'mvolkmann/vim-js-arrow-function'
 
 " clojure
@@ -217,7 +220,7 @@ Plug 'klen/python-mode',                  { 'for': 'python' }
 " Markdown
 " Plug 'reedes/vim-pencil'                  " Markdown, Writing
 
-" Plug 'gabrielelana/vim-markdown'
+Plug 'gabrielelana/vim-markdown'
 
 " Scala
 Plug 'derekwyatt/vim-scala'
@@ -338,7 +341,7 @@ let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'typesc
 
 syntax enable
 set background=dark
-colorscheme jummidark
+colorscheme snazzy
 
 
 

@@ -70,28 +70,29 @@ task_list_done () {
     ls -1t "$task_dir" | grep -E "^done-"
 }
 
-case $1 in
-    add )
-        task_add "${@:2}" ;;
-    edit )
-        task_edit $2 ;;
-    remove )
-        task_remove "$2" ;;
-    rm )
-        task_remove "$2" ;;
-    "done" )
-        task_complete "$2" ;;
-    complete )
-        task_complete "$2" ;;
-    ls )
-        tasks_list ;;
-    append )
-        task_append $2 $3 ;;
-    show )
-        task_show $2 ;;
-    completed )
-        task_list_done ;;
-    * )
-        tasks_list ;;
-esac
-
+tasks () {
+  case $1 in
+      add )
+          task_add "${@:2}" ;;
+      edit )
+          task_edit $2 ;;
+      remove )
+          task_remove "$2" ;;
+      rm )
+          task_remove "$2" ;;
+      "done" )
+          task_complete "$2" ;;
+      complete )
+          task_complete "$2" ;;
+      ls )
+          tasks_list ;;
+      append )
+          task_append $2 $3 ;;
+      show )
+          task_show $2 ;;
+      completed )
+          task_list_done ;;
+      * )
+          tasks_list ;;
+  esac
+}
