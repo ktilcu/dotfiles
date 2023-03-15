@@ -11,7 +11,7 @@ rsync --exclude ".git/" \
 
 # ./.macos
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew Brewfile
+brew bundle
 nvm install stable && nvm use stable
 npm i -g $(cat global_npm)
 pip3 install -r global_pip

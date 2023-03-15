@@ -1,2 +1,2 @@
 cnoreabbrev Gundo GitGutterUndoHunk
-nnoremap <leader>g :GitGutterToggle<CR>
+" nnoremap <leader>g :GitGutterToggle<CR>

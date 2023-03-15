@@ -6,10 +6,10 @@ let &packpath = &runtimepath
 " don't bother with vi compatibility
 set nocompatible
 
-let g:python_host_prog = '/usr/local/bin/python3'
+let g:python_host_prog = '/opt/homebrew/bin/python3'
 let g:python2_host_prog = '/usr/local/bin/python2'
-let g:python3_host_prog = '/usr/local/bin/python3'
-let g:node_host_prog = '/Users/kyletilman/.nvm/versions/node/v16.2.0/lib/node_modules/neovim/bin/cli.js'
+let g:python3_host_prog = '/opt/homebrew/bin/python3'
+" let g:node_host_prog = '/Users/kyle/.asdf/installs/nodejs/16.16.0/bin/node'
 let g:neoterm_autoscroll = 1
 let $NVIM_NODE_LOG_FILE='nvim-node.log'
   let $NVIM_NODE_LOG_LEVEL='warn'
@@ -133,12 +133,14 @@ Plug 'ryanoasis/vim-webdevicons'
 Plug 'junegunn/goyo.vim'
 
 " Project Navigation
-Plug 'junegunn/fzf',                      { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'vim-scripts/ctags.vim'              " ctags related stuff
+" Plug 'junegunn/fzf',                      { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+" Plug 'vim-scripts/ctags.vim'              " ctags related stuff
 " Plug 'majutsushi/tagbar'
 Plug 'liuchengxu/vista.vim'
 Plug 'tpope/vim-vinegar'
+Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
+Plug 'kyazdani42/nvim-tree.lua'
 
 " File Navigation
 Plug 'kshenoy/vim-signature'              " Show marks in the gutter
@@ -151,7 +153,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'                 " Change word surroundings
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-abolish'
 Plug 'kana/vim-textobj-user'
 Plug 'jasonlong/vim-textobj-css'
 Plug 'editorconfig/editorconfig-vim'
@@ -167,39 +169,41 @@ Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim',                   { 'on': 'GV' }
 Plug 'jez/vim-github-hub'                 " Filetype for hub pull requests
 Plug 'lambdalisue/vim-gista'              " Gist manager
-Plug 'AGhost-7/critiq.vim'
 " Task Running
 Plug 'w0rp/ale'                           " Linter
 
+" key bindings
+Plug 'folke/which-key.nvim'
+Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 " Autocomplete
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Snippets
-" Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'jhkersul/vim-jest-snippets'
 
 " Language Support
 " JavaScript
 Plug 'janko/vim-test'
-Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'cdata/vim-tagged-template'
 Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'javascript.jsx', 'typescript.tsx', 'typescriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 Plug 'mvolkmann/vim-js-arrow-function'
-
+Plug 'heavenshell/vim-jsdoc', {
+  \ 'for': ['javascript', 'javascript.jsx','typescript'],
+  \ 'do': 'make install'
+\}
 " clojure
 Plug 'guns/vim-clojure-static'
 Plug 'kien/rainbow_parentheses.vim'
 
 " TypeScript
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins'}
 
 " PHP
 Plug 'shawncplus/phpcomplete.vim'
@@ -218,15 +222,23 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'klen/python-mode',                  { 'for': 'python' }
 
 " Markdown
-" Plug 'reedes/vim-pencil'                  " Markdown, Writing
-
-Plug 'gabrielelana/vim-markdown'
+Plug 'junegunn/goyo.vim'
+Plug 'preservim/vim-pencil'
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-markdown'
+" Plug 'preservim/vim-markdown'
+" Plug 'gabrielelana/vim-markdown'
+Plug 'preservim/vim-colors-pencil'
+Plug 'joshdick/onedark.vim'
 
 " Scala
 Plug 'derekwyatt/vim-scala'
 
 " XML
 Plug 'actionshrimp/vim-xpath'
+
+Plug 'ldelossa/litee.nvim'
+Plug 'ldelossa/gh.nvim'
 
 " Fallback
 Plug 'sheerun/vim-polyglot'
@@ -334,7 +346,14 @@ cnoremap w!! %!sudo tee > /dev/null %
 " Don't copy the contents of an overwritten selection.
 vnoremap p "_dp
 
-let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'typescript', 'ts=typescript']
+
+"fzf lua
+noremap <silent> <C-p> :FzfLua files<CR>
+noremap <leader>b :FzfLua buffers<CR>
+noremap <leader>a :FzfLua live_grep<CR>
+noremap <leader>gd :FzfLua grep_cword<CR>
+
+let g:markdown_fenced_languages = ['html', 'python', 'css', 'javascript', 'javascript=js', 'typescript', 'typescript=ts']
 
 " Section: Theme
 " ------------------------------
@@ -343,6 +362,104 @@ syntax enable
 set background=dark
 colorscheme snazzy
 
+lua << EOF
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    adaptive_size = true,
+    mappings = {
+      list = {
+        { key = "u", action = "dir_up" },
+      },
+    },
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
+EOF
 
+lua << EOF
+require'nvim-web-devicons'.setup {
+ -- your personnal icons can go here (to override)
+ -- you can specify color or cterm_color instead of specifying both of them
+ -- DevIcon will be appended to `name`
+ override = {
+  zsh = {
+    icon = "",
+    color = "#428850",
+    cterm_color = "65",
+    name = "Zsh"
+  }
+ };
+ -- globally enable default icons (default to false)
+ -- will get overriden by `get_icons` option
+ default = true;
+}
+EOF
 
+lua << EOF
+
+require('litee.lib').setup({})
+require('litee.gh').setup({})
+require('fzf-lua')
+vim.cmd("FzfLua register_ui_select")
+
+require("which-key").setup()
+
+local wk = require("which-key")
+wk.register({
+    g = {
+        name = "+Git",
+        h = {
+            name = "+Github",
+            c = {
+                name = "+Commits",
+                c = { "<cmd>GHCloseCommit<cr>", "Close" },
+                e = { "<cmd>GHExpandCommit<cr>", "Expand" },
+                o = { "<cmd>GHOpenToCommit<cr>", "Open To" },
+                p = { "<cmd>GHPopOutCommit<cr>", "Pop Out" },
+                z = { "<cmd>GHCollapseCommit<cr>", "Collapse" },
+            },
+            i = {
+                name = "+Issues",
+                p = { "<cmd>GHPreviewIssue<cr>", "Preview" },
+            },
+            l = {
+                name = "+Litee",
+                t = { "<cmd>LTPanel<cr>", "Toggle Panel" },
+            },
+            r = {
+                name = "+Review",
+                b = { "<cmd>GHStartReview<cr>", "Begin" },
+                c = { "<cmd>GHCloseReview<cr>", "Close" },
+                d = { "<cmd>GHDeleteReview<cr>", "Delete" },
+                e = { "<cmd>GHExpandReview<cr>", "Expand" },
+                s = { "<cmd>GHSubmitReview<cr>", "Submit" },
+                z = { "<cmd>GHCollapseReview<cr>", "Collapse" },
+            },
+            p = {
+                name = "+Pull Request",
+                c = { "<cmd>GHClosePR<cr>", "Close" },
+                d = { "<cmd>GHPRDetails<cr>", "Details" },
+                e = { "<cmd>GHExpandPR<cr>", "Expand" },
+                o = { "<cmd>GHOpenPR<cr>", "Open" },
+                p = { "<cmd>GHPopOutPR<cr>", "PopOut" },
+                r = { "<cmd>GHRefreshPR<cr>", "Refresh" },
+                t = { "<cmd>GHOpenToPR<cr>", "Open To" },
+                z = { "<cmd>GHCollapsePR<cr>", "Collapse" },
+            },
+            t = {
+                name = "+Threads",
+                c = { "<cmd>GHCreateThread<cr>", "Create" },
+                n = { "<cmd>GHNextThread<cr>", "Next" },
+                t = { "<cmd>GHToggleThread<cr>", "Toggle" },
+            },
+        },
+    },
+}, { prefix = "<leader>" })
+EOF
 " command -nargs=* Glg Git! histy <args>

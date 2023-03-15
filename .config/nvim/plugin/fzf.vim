@@ -8,12 +8,12 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-rg)
 
 " Search for tasks across the current project
-nnoremap <C-t> :Files<cr>
+" nnoremap <C-t> :Files<cr>
 
-nnoremap <leader>b :Buffers<CR>
-nnoremap <C-p> :FZF<CR>
-nnoremap <leader>a :Rg<space>
-nnoremap <leader>gd :Rg<space><C-r><C-w><CR>
+" nnoremap <leader>b :Buffers<CR>
+" nnoremap <C-p> :FZF<CR>
+" nnoremap <leader>a :Rg<space>
+" nnoremap <leader>gd :Rg<space><C-r><C-w><CR>
 
 " Custom colors to match theme
 let g:fzf_colors = {
