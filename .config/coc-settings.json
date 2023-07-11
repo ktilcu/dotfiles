@@ -1,11 +1,15 @@
 {
-  "workspace.workspaceFolderCheckCwd": false,
-  "tsserver.tsdk": ".yarn/sdks/typescript/lib",
-"languageserver": {
-    "metals": {
-      "command": "metals-vim",
-      "rootPatterns": ["build.sbt"],
-      "filetypes": ["scala", "sbt"]
-    }
+"tsserver.log": "verbose","tsserver.trace.server": "verbose",  "tsserver.npm": "/usr/local/bin/npm",
+  "tsserver.enableJavascript": true,
+  "javascript.validate.enable": true,
+  "snippets.ultisnips.enable": true,
+  "snippets.ultisnips.directories": ["UltiSnips", "snippets"],
+  "snippets.extends": {
+    "cpp": ["c"],
+    "javascript.jsx": ["javascript"],
+    "javascriptreact": ["javascript"],
+    "typescriptreact": ["javascript"],
+    "typescript.tsx": ["javascript"],
+    "typescript": ["javascript"]
   }
 }

@@ -1,4 +1,6 @@
 #!/usr/bin/env zsh
+TRUNK_BRANCH="main"
+TEAM_REVIEWERS=""
 alias .....="cd ../../../.."
 alias ....="cd ../../.."
 alias ...='cd ../..'
@@ -35,16 +37,15 @@ alias gf="git fetch"
 alias gl="git log --pretty='format:%Cgreen%h%Creset %an - %s' --graph"
 alias gm="git merge"
 alias gp="git push"
-alias gpom="git pull --rebase origin master"
+alias gpom="git pull --rebase origin ${TRUNK_BRANCH}"
 alias gpoh="git push origin HEAD"
 alias gpt="git push --tags"
-alias gpum="git pull --rebase upstream master"
+alias gpum="git pull --rebase upstream ${TRUNK_BRANCH}"
 alias grc="git rebase --continue"
 alias grh="git reset --hard"
-alias grhom="git reset --hard origin/master"
+alias grhom="git reset --hard origin/${TRUNK_BRANCH}"
 alias gfrhom="git fetch && grhom"
-alias gpr="git pull-request -b"
-alias gprm="git pull-request -b master"
+alias gprm="gh pr create --reviewer ${TEAM_REVIEWERS}"
 alias gppr="gpoh && gprm"
 alias gs="git status"
 alias ts="tig status"
@@ -99,7 +100,7 @@ then
 fi
 
 # Set path for node
-alias nvim="PATH=\"/Users/kyletilman/.nvm/versions/node/v16.2.0/bin/:$PATH\" nvim"
+alias nvim="PATH=\"/Users/kyletilman/.nvm/versions/node/v18.5.0/bin/:$PATH\" nvim"
 
 # carbon
 alias cws="carbonhealth-aws aws"

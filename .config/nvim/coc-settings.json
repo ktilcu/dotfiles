@@ -2,10 +2,5 @@
   "workspace.workspaceFolderCheckCwd": false,
   "tsserver.tsdk": ".yarn/sdks/typescript/lib",
 "languageserver": {
-    "metals": {
-      "command": "metals-vim",
-      "rootPatterns": ["build.sbt"],
-      "filetypes": ["scala", "sbt"]
-    }
   }
 }
