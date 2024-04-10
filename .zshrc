@@ -3,6 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export REPOS="$HOME/development"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -71,18 +72,13 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    asdf
     git
     fzf
-    dnf
-    brew
     common-aliases
     node
     npm
-    rand-quote
-    sudo
     yarn
-    z
+    fasd
     colored-man-pages
     colorize
     cp
@@ -118,7 +114,6 @@ export EDITOR='nvim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
@@ -131,7 +126,4 @@ fpath+=("$(brew --prefix)/share/zsh/site-functions")
 autoload -U promptinit; promptinit
 prompt pure
 
-export PATH="/Users/kyle/.cargo/bin/:/Users/kyle/development/lumosity-frontend:/Users/kyle/development/flutter/bin:$PATH"
 export FZF_BASE=/opt/homebrew/bin/fzf
-#fzf_zsh_aws_profile
-source ~/.aws/fzf_zsh_aws_profile

@@ -1,1 +1,0 @@
-nnoremap gbl :Gblame
